@@ -1,0 +1,4 @@
+.net 6 templates:
+dotnet new -install .
+
+dotnet new ep3apm -o "Nuvei.Europay.Afterpay" -P WithLanding

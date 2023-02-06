@@ -1,0 +1,51 @@
+commands:
+
+
+dotnet new webapi -n PlatformService
+dotnet add package AutoMapper.Extensions.Microsoft.DependencyInjection
+dotnet add package Microsoft.EntityFrameworkCore.Design --version 5.0.8 
+dotnet add package Microsoft.EntityFrameworkCore.InMemory --version 5.0.8
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 5.0.8
+dotnet add-package RabbitMQ.Client
+dotnet add package Google.Protobuf
+dotnet add package Grpc.Net.Client
+dotnet add package Grpc.Tools    
+--create CLI commands:
+dotnet tool install --global --add-source ./nupkg ConsoleApp6
+
+WindowsTerminal Profile:
+notepad $PROFILE
+Install-Module oh-my-posh -Scope CurrentUserY
+
+
+docker:
+docker --version
+
+docker build -t victorbejinariu/platformservice .
+--to avoid using cahed images: 
+docker build -t victorbejinariu/platformservice . --no-cache 
+docker run -p 8080:80 -d victorbejinariu/platformservice
+
+docker ps
+docker stop 2b341a5bc8b1
+start b700e0ea5ba9
+
+docker push victorbejinariu/platformservice
+--result latest: digest: sha256:0326edbfe3d19ca251736a00d640984050f550ad4399a46ea26596a20dabd21c size: 1789
+
+
+kuberenets:
+kubectl version
+
+kubectl apply -f platforms-depl.yaml
+kubectl delete -f local-pvs.yaml
+kubectl rollout restart deployment platforms-depl
+
+kubectl get deployments
+kubectl get services
+kubectl get pods
+kubectl get secrets
+-- forgot sa password for mssql -> run this command to get base64 secret
+kubectl get secret mssql2 -o yaml 
+
+kubectl apply -f platform-np-srv.yaml

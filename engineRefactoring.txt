@@ -1,0 +1,15 @@
+- de scos contractele intr-un alt proiect
+
+- folosim Assembly Scanning pentru Europay.Assembler; fiecare metoda expune o interfata ptr fiecare contract
+
+- pentru contractele dinamice( Article, PaymentNotification, PayoutNotification, PreapprovalNotification) adaugam un dictionar (ex: methodFields) ce va fi folosit de metodele ce au nevoie de fielduri noi
+
+- Enums (MethodIds) - vor fi construite din 2 surse: 1 sursa din V2, a 2-a sursa din metoda (using AssemblyScanning)
+
+- ReturnCode list - va fi adus din baza de date, tabela ReturnCodes. Se va tine in cache si la 30 min(configurabil) se refresh-uieste
+
+- metoda PostData - o clasa noua ; construit WebRequestul folosind o metoda fluenta virtuala ca sa intervenim usor daca ii mai trebuie un parametru;
+
+- InterceptResponse ce are are ca parametru response-ul
+
+- InterceptRequest ce intoarce un request modificat (in cazul in care vrem sa atasam diferiti parametri in header spre ex)
